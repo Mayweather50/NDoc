@@ -1,0 +1,65 @@
+﻿@*@using testNdoc.Models
+    @model IEnumerable<Section>
+    @{
+        ViewData["Title"] = "Home Page";
+    }
+    <h2>Нормативно - правовые документы</h2>
+    <p><a asp-action="Create">Добавить компонент</a></p>
+    <table class="table">
+        <tr><th>Главная</th><th>Поисковая страница</th></tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+            </tr>
+        }
+    </table>*@
+
+@model Document
+<form asp-action="Index" asp-controller="Home" method="post">
+
+    <label asp-for="Name"></label>
+    <input type="text" asp-for="Name" />
+
+    <label asp-for="SectionId"></label>
+    <input type="text" asp-for="SectionId" />
+
+    <label asp-for="FileName"></label>
+    <input asp-for="FileName" />
+
+    <input type="submit" />
+</form>
+
+<script>
+    $(function () {
+
+        $("form").submit(function (e) {
+            e.preventDefault();
+
+            var formAction = $(this).attr("action");
+            var fdata = new FormData();
+
+            var fileInput = $('#FileName')[0];
+            var file = fileInput.files[0];
+            fdata.append("FileName", file);
+
+            // You can update the jquery selector to use a css class if you want
+            $("input[type='text'").each(function (x, y) {
+                fdata.append($(y).attr("name"), $(y).val());
+            });
+
+            $.ajax({
+                type: 'post',
+                url: formAction,
+                data: fdata,
+                processData: false,
+                contentType: false
+            }).done(function (result) {
+                // do something with the result now
+                console.log(result);
+            });
+
+        });
+
+    });
+</script>

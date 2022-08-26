@@ -1,0 +1,59 @@
+﻿@*@using testNdoc.Models
+@model Section
+
+    <head>
+        <meta charset="utf-8">
+        <title>Размер текста</title>
+    </head>
+
+<div class="row">
+    <div class="col-4" style="border-right: 1px solid #dcdcdc;">
+        <h6>Добавить компонент</h6>
+
+        <form asp-action="Create" asp-controller="Admin" method="post">
+            <p>
+                <label asp-for="Name">Имя</label><br />
+                <input type="text" asp-for="Name" />
+                <input type="submit" value="Добавить" />
+            </p>
+        </form>
+        <div id="TableSectionsContainer">
+
+        </div>
+    </div>
+    <div class="col-8" id="Documents">
+        
+    </div>
+</div>
+
+@section Scripts
+{
+        <script>
+            $(document).ready(function () {
+                $.ajax({
+                    url: "TableSection",
+                    method: "get",
+                    success: function (data) {
+                        $("#TableSectionsContainer").html(data);
+                    }
+                })
+
+            })
+
+
+         
+
+
+            function GetDocuments(id) {
+                $.ajax({
+                    url: "CreateDocuments",
+                    method: "get",
+                    data: { sectionId:id },
+                    success: function (data) {
+                        $("#Documents").html(data);
+                    }
+                }) 
+            }
+        </script>
+}*@
+

@@ -1,0 +1,35 @@
+﻿
+
+
+@*<form asp-action="Create" asp-controller="Admin" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="SectionId" />
+    <label asp-for="Name">Имя</label><br />
+    <input type="text" asp-for="Name" />
+    <label asp-for="FileName">Документ</label><br />
+    <input type="file" asp-for="FileName" />
+    <input type="submit" value="Добавить" />
+</form>*@
+<!--<form method="post" enctype="multipart/form-data" >
+    <br />
+    <input type="hidden" asp-for="SectionId" />
+    <label asp-for="Name">Имя</label>
+    <input type="text" asp-for="Name" />
+
+    <input type="file" name="filesupload" multiple />
+    <input type="button" value="Добавить" onclick="SaveDocument()" />
+    <hr />
+    <h2>@ViewData["Message"]</h2>
+
+</form>
+  
+
+
+<div id="TableDocumentsContainer">
+
+</div>
+
+<script>
+    function SaveDocument() {
+        console.log("2323");
+    }
+</script>-->
